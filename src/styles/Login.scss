@@ -1,0 +1,31 @@
+.login-form {
+    width: 15%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    display: flex;
+    flex-direction: column;
+    label {
+        font-size: 14px;
+        color: #333;
+    }
+    input {
+        border: 1px solid #999;
+        outline: none;
+        margin-bottom: 20px;
+    }
+    button {
+        border: none;
+        background-color: #0276eb;
+        color: #fff;
+        transition: .2s;
+    }
+    button:hover {
+        background-color: #06c;
+    }
+    .btn-go-register{
+        font-size: 14px;
+        color: #06c;
+    }
+}
