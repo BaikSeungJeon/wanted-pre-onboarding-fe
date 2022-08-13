@@ -1,9 +1,9 @@
 .login-form {
     width: 15%;
     position: absolute;
-    top: 20%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -20%);
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     label {
@@ -16,6 +16,7 @@
         margin-bottom: 20px;
     }
     button {
+        padding: 5px 0;
         border: none;
         background-color: #0276eb;
         color: #fff;

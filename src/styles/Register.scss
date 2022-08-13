@@ -1,0 +1,32 @@
+.register-form {
+    width: 15%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    label {
+        font-size: 14px;
+        color: #333;
+    }
+    input {
+        border: 1px solid #999;
+        outline: none;
+        margin-bottom: 20px;
+    }
+    button {
+        padding: 5px 0;
+        border: none;
+        background-color: #0276eb;
+        color: #fff;
+        transition: .2s;
+    }
+    button:hover {
+        background-color: #06c;
+    }
+    .btn-go-login{
+        font-size: 14px;
+        color: #06c;
+    }
+}

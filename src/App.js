@@ -2,9 +2,9 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 /* 컴포넌트  */
-import Login from './pages/Login'
-import Register from './pages/Register';
-import Todo from './pages/Todo';
+import Login from './pages/Login/Login.js'
+import Register from './pages/Register/Register.js';
+import TodoList from './pages/TodoList/TodoList.js';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
-        <Route path="/todo" element={<Todo/>}/>
+        <Route path="/todolist" element={<TodoList/>}/>
       </Routes>
     </div>
   );
