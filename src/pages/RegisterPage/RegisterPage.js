@@ -1,6 +1,6 @@
 /* 라이브러리 */
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 /* SASS */
 import '../../styles/Register.scss';
@@ -33,14 +33,11 @@ function Register() {
   // 회원가입 클릭 시 
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log(email, password);
-
     // axios
     axios.post("https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signup", {
       email: email,
       password: password
     }).then((res) => {
-      console.log(res);
       alert('회원가입에 성공하였습니다.');
       navigate("/") // 로그인 화면으로 redirect
     }).catch((error) => {

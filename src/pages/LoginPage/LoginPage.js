@@ -23,20 +23,17 @@ function Login() {
     // 로그인 클릭 시
     const onSubmit = (e) => {
       e.preventDefault();
-      // console.log(email, password);
-
       // axios
       axios.post("https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin", {
         email: email,
         password: password 
       }).then((res) => {
-        console.log(res);
         alert('로그인에 성공하였습니다.');
         // 로컬스토리지에 토큰 저장
         if(res.data.access_token) { 
           localStorage.setItem('token', res.data.access_token);
         }
-        navigate("/todolist"); // todolist로 redirect
+        navigate("/todo") // todo로 redirect
       }).catch((error) => {
         alert('로그인에 실패하였습니다.');
       });

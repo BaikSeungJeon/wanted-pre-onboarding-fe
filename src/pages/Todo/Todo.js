@@ -6,7 +6,7 @@ import '../../styles/TodoList.scss';
 function Todo() {
   return (
     <>
-      TodoList Page.
+      Todo Page.
     </>
   )
 }
