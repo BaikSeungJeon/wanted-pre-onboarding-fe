@@ -36,6 +36,9 @@
     button:hover {
       background-color: #06c;
     }
+    button.disabledBtn {
+      background-color: #999;
+    }
     .btn-go-login{
       font-size: 14px;
       color: #06c;
