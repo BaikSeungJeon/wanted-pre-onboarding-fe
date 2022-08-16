@@ -1,9 +1,8 @@
-/* 라이브러리 */
-import { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-/* SASS */
-import '../../styles/Register.scss';
+import { useState } from 'react'; // useState
+import { Link, Navigate, useNavigate } from 'react-router-dom'; // react-router
+import axios from 'axios'; // axios
+// SASS
+import '../../styles/RegisterPage.scss';
 
 function Register() {
   const [name, setName] = useState("")

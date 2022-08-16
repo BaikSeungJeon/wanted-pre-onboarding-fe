@@ -1,6 +1,6 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-/* utils */
+import { Navigate } from 'react-router-dom'; // react-router
+// utils
 import isLogin from '../utils/isLogin'; // 로그인 접근 권한
 
 const PrivateRoute = ({auth, component: Component}) => {

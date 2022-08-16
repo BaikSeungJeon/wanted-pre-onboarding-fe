@@ -1,9 +1,7 @@
-/* 라이브러리 */
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-/* SASS */
-import '../../styles/Login.scss';
+import { useState } from 'react'; // useState
+import { Link, useNavigate } from 'react-router-dom'; // react-router
+import axios from 'axios'; // axios
+import '../../styles/LoginPage.scss'; // sass
 
 function Login() {
     const [email, setEmail] = useState("")
