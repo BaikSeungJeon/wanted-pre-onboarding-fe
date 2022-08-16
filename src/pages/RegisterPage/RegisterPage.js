@@ -1,8 +1,7 @@
 import { useState } from 'react'; // useState
 import { Link, Navigate, useNavigate } from 'react-router-dom'; // react-router
 import axios from 'axios'; // axios
-// SASS
-import '../../styles/RegisterPage.scss';
+import '../../styles/RegisterPage.scss'; // sass
 
 function Register() {
   const [name, setName] = useState("")
@@ -49,40 +48,41 @@ function Register() {
       <div className="register-form-wrapper">
         <h3>회원가입</h3>
         <form className="register-form">
+          {/* 이름 */}
           <label>이름</label>
           <input
           type="text"
           value={name}
           onChange={onNameHandler} 
           placeholder='이름을 입력하세요.'/>
-
+          {/* 이메일 */}
           <label>이메일</label>
           <input
           type="email"
           value={email}
           onChange={onEmailHandler} 
           placeholder='이메일을 입력하세요.'/>
-
+          {/* 비밀번호 */}
           <label>비밀번호</label>
           <input
           type="password"
           value={password}
           onChange={onPasswordHandler} 
           placeholder='비밀번호는 8자 이상 설정해 주세요.'/>
-
+          {/* 비밀번호 확인 */}
           <label>비밀번호 확인</label>
           <input
           type="password"
           value={confirmPassword} 
           onChange={onConfirmPasswordHandler}
           placeholder='비밀번호를 한 번 더 입력하세요.'/>
-
+          {/* 회원가입 버튼 */}
           <button
           className={isValidRegister ? 'disabledBtn' : ''}
           type="submit"
           onClick={onSubmit}
           disabled={isValidRegister}>회원가입</button>
-
+          {/* 로그인 페이지 이동 문구 */}
           <Link to="/"><p className="btn-go-login">가입이 되어 있으신가요?</p></Link>
         </form>
       </div>

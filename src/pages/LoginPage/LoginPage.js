@@ -20,7 +20,7 @@ function Login() {
     const navigate = useNavigate();
     // 로그인 클릭 시
     const onSubmit = (e) => {
-      e.preventDefault();
+      e.preventDefault(); // 자동 새로고침 방지
       // axios
       axios.post("https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin", {
         email: email,
@@ -39,28 +39,29 @@ function Login() {
     return (
       <>
         <div className="login-form-wrapper">
-          <h3>로그인</h3>
+          <h3>로그인</h3> 
           <form className="login-form">
+            {/* 이메일 */}
             <label>이메일</label>
             <input 
             type="email" 
             value={email} 
             onChange={onEmailHandler}
             placeholder='이메일을 입력하세요.'/>
+            {/* 비밀번호 */}
             <label>비밀번호</label>
-
             <input 
             type="password" 
             value={password} 
             onChange={onPasswordHandler}
             placeholder='비밀번호를 입력하세요.'/>
-
+            {/* 로그인 버튼 */}
             <button
             className={isValidLogin ? 'disabledBtn' : ''}
             type="submit"
             onClick={onSubmit}
             disabled={isValidLogin}>로그인</button>
-
+            {/* 회원가입 페이지 이동 문구 */}
             <Link to="/register"><p className="btn-go-register">아직 회원가입이 안 되어 있으신가요?</p></Link>
           </form>
         </div>

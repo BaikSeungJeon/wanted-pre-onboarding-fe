@@ -24,44 +24,47 @@ const TodoInputBox = styled.input`
   border: none;
   outline: none;
 `
-/* 아이콘 */
+/* 아이콘 스타일 */
 const IconBlock = styled.div`
   font-size: 28px;
   padding: 0 10px;
   cursor: pointer;
 `
 
-function TodoInput() {
-  const [schedule, setSchedule] = useState("");
+function TodoInput({onInsert}) {
+  const [todoText, setTodoText] = useState("");
   const onPlanHandler = (e) => {
-    setSchedule(e.currentTarget.value)
+    setTodoText(e.currentTarget.value)
   }
   // 입력 버튼 클릭 시
-  const onAdd = (e) => {
-    e.preventDefault();
-    setSchedule(""); // 입력창 초기화
-    // alert('hi');
-  }
-  // 엔터 시 입력
-  const onKeyPress = (e) => {
-    if(e.key === 'Enter') {
-      onAdd();
+  const onSubmit = (e) => {
+    e.preventDefault(); // 자동 새로고침 방지
+    if(todoText === '' || null) {
+      alert('할 일을 입력해 주세요!'); // 공백 입력 방지
+    }else {
+      onInsert(todoText); // 입력창에 입력한 값 투두리스트에 등록
+      setTodoText(""); // 입력창 초기화
     }
   }
   return (
     <TodoInputBlock>
-      <TodoInputForm>
+      <TodoInputForm
+        onSubmit={onSubmit}
+        autoFocus // form에 Focus 둘 시, Enter로도 입력 가능
+      >
         <TodoInputBox
-          id="todoInput"
           type="text"
-          value={schedule}
-          onKeyPress={onKeyPress}
+          value={todoText}
           onChange={onPlanHandler}
           placeholder='할 일을 입력하신 후, Enter 혹은 우측 버튼을 클릭해 주세요!'
           autoFocus
         />
       </TodoInputForm>
-      <IconBlock onClick={onAdd}><MdAddCircle/></IconBlock>
+      <IconBlock>
+        <MdAddCircle
+          onClick={onSubmit}
+        />
+      </IconBlock>
     </TodoInputBlock>
   )
 }
