@@ -14,3 +14,4 @@ URL 첨부 예정
 - styled-component
 - react-router
 - axios
+- JWT
