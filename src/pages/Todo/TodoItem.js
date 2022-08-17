@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { MdCheckCircleOutline, MdCheckCircle, MdEdit, MdDelete } from 'react-icons/md'; // react-icons
 import styled, { css } from 'styled-components'; // styled-components
 
@@ -23,14 +23,30 @@ const TextBlock = styled.div`
 `
 
 function TodoItem(props) {
+  // 투두리스트의 id, 할 일, 완료 여부
+  const {id, todo} = props.todo;
+  // 체크 박스
+  const [isCompleted, setIsCompleted] = useState(false);
+  
   return (
     <TodoItemBlock>
-      <IconBlock>
-        {props.done ? <MdCheckCircle/> : <MdCheckCircleOutline/>}
+      <IconBlock onClick={() => {
+        setIsCompleted(!isCompleted);
+      }}>
+        {isCompleted ? <MdCheckCircle/> : <MdCheckCircleOutline/>}
       </IconBlock>
-      <TextBlock>{props.todo}</TextBlock>
-      <IconBlock><MdEdit/></IconBlock>
-      <IconBlock><MdDelete/></IconBlock>
+      <TextBlock>{todo}</TextBlock>
+      <IconBlock>
+        <MdEdit 
+          onClick={() => {
+            props.onSelectedTodo(todo); // 클릭한 투두리스트 개별 아이템의 text
+            props.onModal(); // 클릭 시 modal 출력
+          }}/>
+      </IconBlock>
+      <IconBlock>
+        <MdDelete
+          onClick={() => {props.onDelete(id)}}/>
+      </IconBlock>
     </TodoItemBlock>
   )
 }

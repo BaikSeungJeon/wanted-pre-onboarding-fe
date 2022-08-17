@@ -9,6 +9,7 @@ const TodoInputBlock = styled.div`
   left: 0;
   display: flex;
   align-items: center;
+  background-color: #fff;
 `
 /* 투두리스트 입력창 폼 */
 const TodoInputForm = styled.form`
@@ -31,7 +32,7 @@ const IconBlock = styled.div`
   cursor: pointer;
 `
 
-function TodoInput({onInsert}) {
+function TodoInput(props) {
   const [todoText, setTodoText] = useState("");
   const onPlanHandler = (e) => {
     setTodoText(e.currentTarget.value)
@@ -42,7 +43,7 @@ function TodoInput({onInsert}) {
     if(todoText === '' || null) {
       alert('할 일을 입력해 주세요!'); // 공백 입력 방지
     }else {
-      onInsert(todoText); // 입력창에 입력한 값 투두리스트에 등록
+      props.onInsert(todoText); // 입력창에 입력한 값 투두리스트에 등록
       setTodoText(""); // 입력창 초기화
     }
   }
@@ -50,7 +51,6 @@ function TodoInput({onInsert}) {
     <TodoInputBlock>
       <TodoInputForm
         onSubmit={onSubmit}
-        autoFocus // form에 Focus 둘 시, Enter로도 입력 가능
       >
         <TodoInputBox
           type="text"
