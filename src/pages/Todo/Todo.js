@@ -97,6 +97,7 @@ function Todo() {
       setTodos(todos.map((value) => {
         return value.id === id ? {...value, todo} : value
       }));
+      window.location.reload();
     }).catch((error) => {
       alert("수정에 실패하였습니다.");
     })

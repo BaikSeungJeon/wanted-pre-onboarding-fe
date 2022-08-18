@@ -25,12 +25,11 @@ const TodoItemText = styled.div`
 function TodoItem(props) {
   // 투두리스트의 id, 할 일, 완료 여부
   const {id, todo, isCompleted} = props.todo;
-  // 체크 박스
-  // const [isCompleted, setIsCompleted] = useState(false);
   
   return (
     <TodoItemBlock>
-      <TodoItemIcon>
+      <TodoItemIcon
+      >
         {isCompleted ? <MdCheckCircle/> : <MdCheckCircleOutline/>}
       </TodoItemIcon>
       <TodoItemText>{todo}</TodoItemText>

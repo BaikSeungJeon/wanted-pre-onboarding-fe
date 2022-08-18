@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'; // useState
 import styled from 'styled-components'; // styled-component
+import { MdCheckCircleOutline, MdCheckCircle } from 'react-icons/md'; // react-icons
 
 const TodoModalBlock = styled.div`
   z-index: 999;
@@ -17,6 +18,8 @@ const TodoModalBlock = styled.div`
 `
 const TodoModalForm = styled.form`
   width: 100%;
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
   margin: 0 auto;
   padding: 10px 0;
@@ -24,6 +27,11 @@ const TodoModalForm = styled.form`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`
+const TodoModalIcon = styled.div`
+  font-size: 28px;
+  padding: 0 10px;
+  cursor: pointer;
 `
 const TodoModalInput = styled.input`
   width: 90%;
@@ -43,10 +51,15 @@ const ModalButton = styled.button`
   cursor: pointer;
 `
 function TodoEditModal(props) {
-  
   const [editText, setEditText] = useState('');
   const onChange = (e) => {
     setEditText(e.currentTarget.value);
+  }
+  // 투두리스트 완료 체크 버튼
+  const [doneCheck, setDoneCheck] = useState(props.selectedItem.isCompleted);
+  const onCheckButton = () => {
+    // 클릭 시 기존 isCompleted의 반대를 전송해 주면 됨.
+    setDoneCheck(!props.selectedItem.isCompleted);
   }
 
   // 투두리스트 개별 아이템 선택하면 모달창에 해당 text 가지고 오기
@@ -58,7 +71,7 @@ function TodoEditModal(props) {
 
   // 수정하기 버튼 클릭
   const onSubmit = (e) => {
-    props.onEdit(props.selectedItem.id, editText, props.selectedItem.isCompleted);
+    props.onEdit(props.selectedItem.id, editText, doneCheck);
     e.preventDefault(); // 새로고침 방지
   }
 
@@ -66,6 +79,11 @@ function TodoEditModal(props) {
     <TodoModalBlock>
       <TodoModalForm
         onSubmit={onSubmit}>
+        <TodoModalIcon onClick={() => {
+          onCheckButton();
+        }}>
+          {doneCheck ? <MdCheckCircle/> : <MdCheckCircleOutline/>}
+        </TodoModalIcon>
         <TodoModalInput
           type="text"
           value={editText}
