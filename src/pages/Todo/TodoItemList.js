@@ -19,7 +19,7 @@ function TodoItemList(props) {
             key={v.id}
             onDelete={props.onDelete}
             onModal={props.onModal}
-            onSelectedTodo={props.onSelectedTodo}/>
+            onSelectedItem={props.onSelectedItem}/>
         )
       })}
     </TodoItemListBlock>

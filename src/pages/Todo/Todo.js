@@ -78,34 +78,28 @@ function Todo() {
     setModal(!modal);
   }
   // 투두리스트 수정할 개별 아이템 선택
-  const [selectedTodo, setSelectedTodo] = useState(null);
-  const onSelectedTodo = (todo) => {
-    setSelectedTodo(todo);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const onSelectedItem = (selectedItemValue) => {
+    setSelectedItem(selectedItemValue);
   }
 
   // 투두리스트 내용 수정 (id, 할 일, 완료 상태)
-  // const onEdit = (id, todo, done) => {
-  //   axios.put(`https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/${id}`, {
-  //     todo: todo,
-  //     isCompleted: done
-  //   }, {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //       "Content-Type": `application/json`
-  //     }
-  //   }).then((res) => {
-  //     setTodos(todos.map((value) => {
-  //       return value.id === id ? {...value, todo} : value
-  //     }));
-  //   }).catch((error) => {
-  //     alert("수정에 실패하였습니다.");
-  //   })
-  //   setModal(!modal); // 모달 종료
-  // }
-  const onEdit = (id, todo) => {
-    setTodos(todos.map((value) => {
-      return value.id === id ? {...value, todo} : value
-    }));
+  const onEdit = (id, todo, done) => {
+    axios.put(`https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/${id}`, {
+      todo: todo,
+      isCompleted: done
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": `application/json`
+      }
+    }).then((res) => {
+      setTodos(todos.map((value) => {
+        return value.id === id ? {...value, todo} : value
+      }));
+    }).catch((error) => {
+      alert("수정에 실패하였습니다.");
+    })
     setModal(!modal); // 모달 종료
   }
     
@@ -117,7 +111,7 @@ function Todo() {
         todos={todos}
         onDelete={onDelete}
         onModal={onModal}
-        onSelectedTodo={onSelectedTodo}/>
+        onSelectedItem={onSelectedItem}/>
        {/* 투두리스트 입력 */}
       <TodoInput
         onInsert={onInsert}/>
@@ -125,7 +119,7 @@ function Todo() {
       {modal === true ? <TodoModal
         todos={todos}
         onModal={onModal}
-        selectedTodo={selectedTodo}
+        selectedItem={selectedItem}
         onEdit={onEdit}/> : null}
     </TodoBlock>
   )

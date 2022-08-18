@@ -20,13 +20,13 @@ const TodoInputForm = styled.form`
   padding: 10px;
 `
 /* 투두리스트 입력창 */
-const TodoInputBox = styled.input`
+const TodoInputWrap = styled.input`
   width: 100%;
   border: none;
   outline: none;
 `
 /* 아이콘 스타일 */
-const IconBlock = styled.div`
+const TodoInputIcon = styled.div`
   font-size: 28px;
   padding: 0 10px;
   cursor: pointer;
@@ -52,7 +52,7 @@ function TodoInput(props) {
       <TodoInputForm
         onSubmit={onSubmit}
       >
-        <TodoInputBox
+        <TodoInputWrap
           type="text"
           value={todoText}
           onChange={onPlanHandler}
@@ -60,11 +60,11 @@ function TodoInput(props) {
           autoFocus
         />
       </TodoInputForm>
-      <IconBlock>
+      <TodoInputIcon>
         <MdAddCircle
           onClick={onSubmit}
         />
-      </IconBlock>
+      </TodoInputIcon>
     </TodoInputBlock>
   )
 }
