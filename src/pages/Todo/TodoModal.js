@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'; // useState
+import { useState, useEffect } from 'react'; // useState
 import styled from 'styled-components'; // styled-component
 import { MdCheckCircleOutline, MdCheckCircle } from 'react-icons/md'; // react-icons
 
