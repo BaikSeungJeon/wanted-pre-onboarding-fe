@@ -1,22 +1,22 @@
 import { useState } from 'react'; // useState
 import { Link, useNavigate } from 'react-router-dom'; // react-router
 import axios from 'axios'; // axios
-import '../../styles/LoginPage.scss'; // sass
+import '../../styles/LoginPage.scss'; // 로그인 페이지 sass
 
 function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     // 로그인 유효성 검사. email @ 포함, password 8자 이상
     const isValidLogin = !(email.includes("@") && password.length >= 8)
-    // 이메일 입력 시 useState
+    // 이메일 핸들러
     const onEmailHandler = (e) => {
         setEmail(e.currentTarget.value)
     }
-    // 비밀번호 입력 시 useState
+    // 비밀번호 핸들러
     const onPasswordHandler = (e) => {
         setPassword(e.currentTarget.value)
     }
-    // useNavigate
+    // useNavigate(redirect 시)
     const navigate = useNavigate();
     // 로그인 클릭 시
     const onSubmit = (e) => {
@@ -40,29 +40,31 @@ function Login() {
       <>
         <div className="login-form-wrapper">
           <h3>로그인</h3> 
+
           <form className="login-form">
-            {/* 이메일 */}
             <label>이메일</label>
             <input 
             type="email" 
             value={email} 
             onChange={onEmailHandler}
             placeholder='이메일을 입력하세요.'/>
-            {/* 비밀번호 */}
+
             <label>비밀번호</label>
             <input 
             type="password" 
             value={password} 
             onChange={onPasswordHandler}
             placeholder='비밀번호를 입력하세요.'/>
-            {/* 로그인 버튼 */}
+
             <button
             className={isValidLogin ? 'disabledBtn' : ''}
             type="submit"
             onClick={onSubmit}
             disabled={isValidLogin}>로그인</button>
-            {/* 회원가입 페이지 이동 문구 */}
-            <Link to="/register"><p className="btn-go-register">아직 회원가입이 안 되어 있으신가요?</p></Link>
+            
+            <Link to="/register">
+              <p className="btn-go-register">아직 회원가입이 안 되어 있으신가요?</p>
+            </Link>
           </form>
         </div>
       </>

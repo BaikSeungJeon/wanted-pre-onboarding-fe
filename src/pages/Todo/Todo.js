@@ -1,13 +1,12 @@
-import { useState, useRef, useEffect, useCallback } from 'react'; // useState
+import { useState, useEffect } from 'react'; // useState
 import styled from 'styled-components'; // styled-components 
 import axios from 'axios'; // axios
-// 컴포넌트
 import TodoTitle from './TodoTitle'; // 투두리스트 제목
 import TodoItemList from './TodoItemList'; // 투두리스트 리스트
 import TodoInput from './TodoInput'; // 투두리스트 입력창
 import TodoModal from './TodoModal'; // 투두리스트 수정 모달
 
-// 투두리스트 스타일
+// 투두리스트 블록
 const TodoBlock = styled.div`
   width: 700px;
   height: 700px;
@@ -21,6 +20,7 @@ const TodoBlock = styled.div`
   transform: translate(-50%, -50%);
   overflow: hidden; /* 넘어오는 리스트 가리기 */
 `
+
 function Todo() {
   // 투두리스트
   const [todos, setTodos] = useState([]);
@@ -51,7 +51,7 @@ function Todo() {
         "Content-Type": `application/json`
       }
     }).then((res) => {
-      setTodos(todos.concat(res.data)); // 실시간 리스트에 합하기
+      setTodos(todos.concat(res.data)); // 실시간 리스트에 추가
     }).catch((error) => {
       alert("입력에 실패하였습니다.");
     })
@@ -82,7 +82,6 @@ function Todo() {
   const onSelectedItem = (selectedItemValue) => {
     setSelectedItem(selectedItemValue);
   }
-
   // 투두리스트 내용 수정 (id, 할 일, 완료 상태)
   const onEdit = (id, todo, done) => {
     axios.put(`https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/${id}`, {
@@ -97,26 +96,25 @@ function Todo() {
       setTodos(todos.map((value) => {
         return value.id === id ? {...value, todo} : value
       }));
-      window.location.reload();
+      window.location.reload(); // 수정 후 자동 새로고침
     }).catch((error) => {
       alert("수정에 실패하였습니다.");
     })
     setModal(!modal); // 모달 종료
   }
-    
+
   return (
     <TodoBlock>
-      <TodoTitle/> {/* 투두리스트 타이틀 */}
-       {/* 투두리스트 리스트 */}
+      <TodoTitle/>
+
       <TodoItemList 
         todos={todos}
         onDelete={onDelete}
         onModal={onModal}
         onSelectedItem={onSelectedItem}/>
-       {/* 투두리스트 입력 */}
-      <TodoInput
-        onInsert={onInsert}/>
-       {/* 투두리스트 모달 */}
+
+      <TodoInput onInsert={onInsert}/>
+
       {modal === true ? <TodoModal
         todos={todos}
         onModal={onModal}

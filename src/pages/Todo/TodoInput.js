@@ -2,6 +2,7 @@ import { useState } from 'react'; // useState
 import { MdAddCircle } from 'react-icons/md'; // react-icons
 import styled from 'styled-components'; // styled-components
 
+// 투두리스트 입력창 블록
 const TodoInputBlock = styled.div`
   width: 100%;
   position: absolute;
@@ -11,7 +12,7 @@ const TodoInputBlock = styled.div`
   align-items: center;
   background-color: #fff;
 `
-/* 투두리스트 입력창 폼 */
+// 투두리스트 입력창 폼
 const TodoInputForm = styled.form`
   width: 90%;
   border: 1px solid #ccc;
@@ -19,13 +20,13 @@ const TodoInputForm = styled.form`
   margin: 10px 0 10px 10px;
   padding: 10px;
 `
-/* 투두리스트 입력창 */
+// 투두리스트 입력창 랩
 const TodoInputWrap = styled.input`
   width: 100%;
   border: none;
   outline: none;
 `
-/* 아이콘 스타일 */
+// 투두리스트 입력창 아이콘(추가)
 const TodoInputIcon = styled.div`
   font-size: 28px;
   padding: 0 10px;
@@ -34,7 +35,8 @@ const TodoInputIcon = styled.div`
 
 function TodoInput(props) {
   const [todoText, setTodoText] = useState("");
-  const onPlanHandler = (e) => {
+  // 투두리스트 입력 핸들러
+  const onTodoHandler = (e) => {
     setTodoText(e.currentTarget.value)
   }
   // 입력 버튼 클릭 시
@@ -49,21 +51,17 @@ function TodoInput(props) {
   }
   return (
     <TodoInputBlock>
-      <TodoInputForm
-        onSubmit={onSubmit}
-      >
+      <TodoInputForm onSubmit={onSubmit}>
         <TodoInputWrap
           type="text"
           value={todoText}
-          onChange={onPlanHandler}
+          onChange={onTodoHandler}
           placeholder='할 일을 입력하신 후, Enter 혹은 우측 버튼을 클릭해 주세요!'
-          autoFocus
-        />
+          autoFocus/>
       </TodoInputForm>
+
       <TodoInputIcon>
-        <MdAddCircle
-          onClick={onSubmit}
-        />
+        <MdAddCircle onClick={onSubmit}/>
       </TodoInputIcon>
     </TodoInputBlock>
   )
