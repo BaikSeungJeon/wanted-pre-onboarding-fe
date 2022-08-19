@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/BaikSeungJeon/wanted-pre-onboarding-fe/static/css/main.9541fd87.css",
+    "main.js": "/BaikSeungJeon/wanted-pre-onboarding-fe/static/js/main.982dedfb.js",
+    "static/js/787.6988f484.chunk.js": "/BaikSeungJeon/wanted-pre-onboarding-fe/static/js/787.6988f484.chunk.js",
+    "index.html": "/BaikSeungJeon/wanted-pre-onboarding-fe/index.html",
+    "main.9541fd87.css.map": "/BaikSeungJeon/wanted-pre-onboarding-fe/static/css/main.9541fd87.css.map",
+    "main.982dedfb.js.map": "/BaikSeungJeon/wanted-pre-onboarding-fe/static/js/main.982dedfb.js.map",
+    "787.6988f484.chunk.js.map": "/BaikSeungJeon/wanted-pre-onboarding-fe/static/js/787.6988f484.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9541fd87.css",
+    "static/js/main.982dedfb.js"
+  ]
+}
